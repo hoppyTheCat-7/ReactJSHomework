@@ -1,0 +1,38 @@
+nav {
+    border-top: 1px solid #c7f9cc;
+    margin-bottom: 180px; /*pushing down the buttons and the footer*/
+}
+
+nav .navbar {
+    display: flex;
+    justify-content:space-around;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav .navbar li a {
+    display: inline-block;
+    color: #fec5bb;
+    text-decoration: none;
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600;
+    padding: 8px 12px;
+    transition: color 0.3s ease;
+}
+
+nav .navbar li a:hover {
+    color: #c7f9cc;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    nav .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav .navbar li a {
+        font-size: 1.25rem; /* 20px */
+        font-weight: 500;
+    }
+}
