@@ -2,7 +2,6 @@ import TaskItem from "./TaskItem";
 
 function ListItem({ items }) {
     return (
-        <>
         <div className="list-wrapper">
             <h1>To-do List</h1>
             <ul className="list-container">
@@ -12,8 +11,7 @@ function ListItem({ items }) {
                     )
                 })}
             </ul>
-        </div>   
-        </>
+        </div>
     );
 }
 
