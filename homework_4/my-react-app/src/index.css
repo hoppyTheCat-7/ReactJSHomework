@@ -1,0 +1,121 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Exercise 1 */
+.counter-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #242424;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.counter-btn {
+  border: none;
+  border-radius: 5px;
+  background-color: #2d2d2d;
+  color: #fff;
+  font-size: 1.2rem;
+  min-width: 150px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.counter-btn:hover {
+  background-color: #444;
+}
+
+.counter-btn:active {
+  transform: scale(0.97);
+}
+
+.counter-btn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Exercise 2 */
+.user-container {
+  background-color: #3a3a3a;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-card {
+  background-color: #c9e4ca;
+  color: #55828b;
+  font-size: 1.3rem;
+  text-align: left;
+  padding: 20px;
+  margin-top: 15px;
+  border-radius: 8px;
+  width: 450px;
+}
+
+.user-btn {
+  border: none;
+  background-color: #55828b;
+  color: #c9e4ca;
+  font-size: 1.1rem;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Exercise 3 */
+.gallery-container {
+  margin-top: 20px;
+  background-color: #3a3a3a;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.cat-btn {
+  border: none;
+  background-color: #999;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto;
+}
+
+.cat-btn:hover {
+  background-color: #807a7a;
+}
+
+.cat-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  max-width: 100%;
+  margin: 30px auto;
+}
