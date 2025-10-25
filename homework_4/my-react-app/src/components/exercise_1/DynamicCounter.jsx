@@ -1,17 +1,24 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 function DynamicCounter() {
     const [counter, setCounter] = useState(0);
+    const counterContainerRef = useRef(null);
 
     useEffect(() => {
-        if (counter > 0) document.body.style.backgroundColor = "#00ff00";
-        else if (counter < 0) document.body.style.backgroundColor = "#ff0000";
-        else if (counter === 0) document.body.style.backgroundColor = "#fff";
+        if (counter > 0) {
+            counterContainerRef.current.style.backgroundColor = "#00ff00";
+        }
+        else if (counter < 0) {
+            counterContainerRef.current.style.backgroundColor = "#ff0000";
+        }
+        else {
+            counterContainerRef.current.style.backgroundColor = "#fff";
+        }
     }, [counter])
     console.log(counter);
 
     return (
-        <div className="counter-container">
+        <div className="counter-container" ref={counterContainerRef}>
             <h1>Simple Counter with Dynamic Background</h1>
             <h2 style={{ fontSize: "3rem" }}>{counter <= -11 ? "You can't go below -10" : counter}</h2>
             <div className="btn-container">
