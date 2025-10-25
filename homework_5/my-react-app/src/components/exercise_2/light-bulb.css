@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.light-wrapper {
+    background-color: #3a3a3a;
+    padding: 20px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.light-wrapper h1 {
+    margin-bottom: 30px;
+}
+
+.light-wrapper button {
+    margin-top: 20px;
+    padding: 8px 12px;
+    border: none;
+    text-align: center;
+    width: auto;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.light-wrapper button:active {
+    transform: scale(0.97);
+}
+
+.light-wrapper button.transparent {
+    opacity: 0.6;
+}
+
+.light-wrapper button.opaque {
+    opacity: 1;
+}
