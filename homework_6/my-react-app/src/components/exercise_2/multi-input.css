@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.multi-input-holder {
+    background-color: #323232;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 20px;
+    height: auto;
+}
+
+.multi-input-holder form {
+    min-width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    border: 6px solid #ccc;
+    background-color: #d8e2dc;
+    color: #2b2d42;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.multi-input-holder form label {
+    margin: 8px 6px;
+    font-size: 1rem;
+}
+
+.multi-input-holder form input[type="text"],
+.multi-input-holder form input[type="email"],
+.multi-input-holder form select {
+    width: 40%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 5px;
+}
+
+.multi-input-holder form input[type="radio"],
+.multi-input-holder form input[type="checkbox"] {
+    margin: 5px;
+}
+
+.multi-input-holder form button {
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: white;
+    padding: 8px 10px;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.multi-input-holder form button:hover {
+    background-color: #0056b3;
+}
+
+.multi-input-holder form span:first-child {
+    margin-right: 5px;
+    font-weight: 600;
+}
+
+.multi-input-holder form span[style*="color: red"]  {
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
+
+hr {
+    margin: 15px 0;
+    border: none;
+    border-top: 1px solid #ccc;
+}
+
+.data-box {
+    min-width: 70%;
+    background-color: #1b1b1b;
+    border: 3px solid #444;
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin: 0 auto;
+}
+
+.data-box h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.data-box p {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}

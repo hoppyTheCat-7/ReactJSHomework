@@ -1,0 +1,113 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Home component */
+.main-container {
+  padding: 20px;
+  background-color: #323232;
+  font-size: 1.1rem;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.search-box {
+  max-width: 100%;
+  padding: 20px;
+}
+
+.search-box label {
+  padding: 8px 12px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.search-box input[type="search"] {
+  width: 100%;
+  min-width: 250px;
+  max-width: 350px;
+  padding: 10px 15px;
+  border: 2px solid #e0e0e0;
+  outline: none;
+  border-radius: 8px;
+}
+
+.search-box label span {
+  margin-right: 6px;
+}
+
+/* CountryCard component */
+.countries-container {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.country-card {
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  width: 350px;
+  height: 190px;
+  text-align: center;
+  color: #323232;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.country-card:hover {
+  transform: scale(1.05);
+}
+
+.country-link {
+  text-decoration: none;
+}
+
+/* CountryDetail component */
+.country-details {
+  background-color: #323232;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 8px;
+  width: 90%;
+  margin: 20px auto;
+}
+
+.country-details img {
+  max-width: 100%;
+  height: auto;
+}
+
+.country-details p {
+  font-size: 1.1rem;
+}
