@@ -1,48 +1,56 @@
 import { useEffect, useState } from "react";
-import CountryCard from "./CountryCard"
+import Countries from "../components/Countries";
 
 function Home() {
     const [countries, setCountries] = useState([]);
     const [countryName, setCountryName] = useState("");
+    const [filteredCountries, setFilteredCountries] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const fetchAllCountries = () => {
-        fetch("https://restcountries.com/v3.1/all?fields=name,flags,region,population")
-            .then((res) => {
-                console.log("Response object:", res);
-                return res.json();
-            })
-            .then((data) => {
-                console.log("Data returned from the API:", data);
-                return setCountries(data);
-            })
-            .catch((err) => console.log("Error fetching countries:", err));
+    const fetchAllCountries = async () => {
+        try {
+            const res = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,region,population");
+            const data = await res.json();
+            setCountries(data);
+            setFilteredCountries(data);
+            setLoading(false);
+        } catch (err) {
+            setError(err.message);
+            setLoading(false);
+        }
     };
 
     useEffect(() => {
         fetchAllCountries()
     }, []);
 
-    const filteredCountries = countries.filter(country => {
-        return (country.name.common.toLowerCase().includes(countryName.toLowerCase()) ||
-            country.name.official.toLowerCase().includes(countryName.toLowerCase()))
-    });
+    const handleSearch = () => {
+        const filteringCountries = countries.filter(country => {
+            return (country.name.common.toLowerCase().includes(countryName.toLowerCase()) ||
+                country.name.official.toLowerCase().includes(countryName.toLowerCase()))
+        });
+        setFilteredCountries(filteringCountries);
+        setCountryName("");
+    };
 
     return (
         <main className="main-container">
-            <form onSubmit={(e) => e.preventDefault()} className="search-box">
-                <label htmlFor="search">
-                    <span>Search a country:</span>
-                    <input
-                        type="search"
-                        id="search"
-                        value={countryName}
-                        placeholder="e.g. United States or America"
-                        onChange={(e) => setCountryName(e.target.value)}
-                    />
-                </label>
-            </form>
+            <div className="search-box">
+                <label htmlFor="search">Search a country:</label>
+                <input
+                    type="search"
+                    id="search"
+                    value={countryName}
+                    placeholder="e.g. united, states or america"
+                    onChange={(e) => setCountryName(e.target.value)}
+                />
+                <button onClick={handleSearch}>Search</button>
+            </div>
 
-            <CountryCard countries={filteredCountries} />
+            {loading && <p>Loading countries...</p>}
+            {error && <p style={{color: "red"}}>{error}</p>}
+            {!loading && !error && <Countries countries={filteredCountries} />}
         </main>
     );
 }

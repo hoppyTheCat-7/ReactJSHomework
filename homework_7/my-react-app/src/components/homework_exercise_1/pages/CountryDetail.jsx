@@ -3,20 +3,21 @@ import { useParams } from "react-router-dom";
 
 function CountryDetail() {
     const [singleCountry, setSingleCountry] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const { name } = useParams();
     console.log(name);
 
-    const fetchSingleCountry = (name) => {
-        fetch(`https://restcountries.com/v3.1/name/${name}`)
-            .then((res) => {
-                console.log("Response object:", res);
-                return res.json();
-            })
-            .then((data) => {
-                console.log("Data returned from the API:", data);
-                return setSingleCountry(data[0]);
-            })
-            .catch((err) => console.error("Error fetching country:", err));
+    const fetchSingleCountry = async (name) => {
+        try {
+            const res = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`);
+            const data = await res.json();
+            setSingleCountry(data[0]);
+            setLoading(false);
+        } catch (err) {
+            setError(err.message);
+            setLoading(false);
+        }
     };
 
     useEffect(() => {
@@ -25,27 +26,51 @@ function CountryDetail() {
 
     return (
         <>
-            {singleCountry && (
+            {loading && <p>Loading country details...</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
+            {!loading && !error && singleCountry && (
                 <section className="country-details">
                     <h1>{singleCountry.name.common}</h1>
                     <img
                         src={singleCountry.flags.png}
                         alt={singleCountry.flags.alt}
                     />
-                    <p><strong>Official Name:{" "}</strong>{singleCountry.name.official}</p>
-                    <p><strong>Capital City:{" "}</strong> {singleCountry.capital.join(", ")}</p>
-                    <p><strong>Currency:{" "}</strong>{Object.values(singleCountry.currencies)[0].name}</p>
-                    <p><strong>Google Maps:{" "}</strong>
-                        <a
-                            href={singleCountry.maps.googleMaps}
-                            target="_blank"
-                        >
-                            {singleCountry.maps.googleMaps}
-                        </a>
-                    </p>
-                    <p><strong>Continent:{" "}</strong>{singleCountry.continents.join(", ")}</p>
-                    <p><strong>Language:{" "}</strong>{Object.values(singleCountry.languages).join(", ")}</p>
-                    <p><strong>Time Zone:{" "}</strong>{singleCountry.timezones.join(", ")}</p>
+                    <table className="country-table">
+                        <tr>
+                            <th>Official Name:</th>
+                            <td>{singleCountry.name.official}</td>
+                        </tr>
+                        <tr>
+                            <th>Capital City:</th>
+                            <td>{singleCountry.capital.join(", ")}</td>
+                        </tr>
+                        <tr>
+                            <th>Currency:</th>
+                            <td>{Object.values(singleCountry.currencies)[0].name}</td>
+                        </tr>
+                        <tr>
+                            <th>Google Maps:</th>
+                            <td>
+                                <a
+                                    href={singleCountry.maps.googleMaps}
+                                    target="_blank"
+                                >View on Google Maps
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Continent:</th>
+                            <td>{singleCountry.continents.join(", ")}</td>
+                        </tr>
+                        <tr>
+                            <th>Language:</th>
+                            <td>{Object.values(singleCountry.languages).join(", ")}</td>
+                        </tr>
+                        <tr>
+                            <th>Time Zone:</th>
+                            <td>{singleCountry.timezones.join(", ")}</td>
+                        </tr>
+                    </table>
                 </section>
             )}
         </>
